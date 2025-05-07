@@ -1,0 +1,576 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #36393F; /* Default to dark theme */
+  color: #FFFFFF;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light theme overrides */
+body[data-theme="white"] {
+  background-color: #f6f8fa;
+  color: #24292e;
+}
+
+/* Purple theme overrides */
+body[data-theme="purple"] {
+  background-color: #1A0F1F;
+  color: #FFFFFF;
+}
+
+/* Green theme overrides */
+body[data-theme="green"] {
+  background-color: #0F1A0F;
+  color: #FFFFFF;
+}
+
+/* Midnight theme overrides */
+body[data-theme="midnight"] {
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Modern card hover effect */
+.MuiCard-root {
+  transition: all 0.2s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.MuiCard-root:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Light theme card border */
+body[data-theme="white"] .MuiCard-root {
+  border: 1px solid #e1e4e8;
+}
+
+/* GitHub-style button hover */
+.MuiButton-contained:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* GitHub-style select */
+.MuiSelect-select {
+  font-weight: 500;
+}
+
+/* GitHub-style chip */
+.MuiChip-root {
+  font-weight: 500;
+  height: 24px;
+}
+
+/* GitHub-style list items */
+.MuiListItem-root {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/* GitHub-style divider */
+.MuiDivider-root {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Light theme divider */
+body[data-theme="white"] .MuiDivider-root {
+  border-color: #e1e4e8;
+}
+
+/* GitHub-style paper */
+.MuiPaper-root {
+  border-radius: 6px;
+}
+
+/* GitHub-style avatar */
+.MuiAvatar-root {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Light theme avatar border */
+body[data-theme="white"] .MuiAvatar-root {
+  border: 1px solid #e1e4e8;
+}
+
+/* GitHub-style app bar */
+.MuiAppBar-root {
+  background-color: #2F3136;
+  color: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Light theme app bar */
+body[data-theme="white"] .MuiAppBar-root {
+  background-color: #ffffff;
+  color: #24292e;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* Purple theme app bar */
+body[data-theme="purple"] .MuiAppBar-root {
+  background-color: #2A1F2F;
+  color: #FFFFFF;
+  border-bottom: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+/* Green theme app bar */
+body[data-theme="green"] .MuiAppBar-root {
+  background-color: #1F2A1F;
+  color: #FFFFFF;
+  border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+/* Midnight theme app bar */
+body[data-theme="midnight"] .MuiAppBar-root {
+  background-color: #121212;
+  color: #FFFFFF;
+  border-bottom: 1px solid rgba(255, 23, 68, 0.3);
+}
+
+/* GitHub-style typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+/* GitHub-style form control */
+.MuiFormControl-root {
+  margin-bottom: 16px;
+}
+
+/* GitHub-style input label */
+.MuiInputLabel-root {
+  font-weight: 500;
+}
+
+/* GitHub-style menu item */
+.MuiMenuItem-root {
+  font-weight: 400;
+}
+
+/* GitHub-style badge */
+.MuiBadge-badge {
+  font-weight: 600;
+}
+
+/* GitHub-style tooltip */
+.MuiTooltip-tooltip {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* GitHub-style icon button */
+.MuiIconButton-root:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Light theme icon button hover */
+body[data-theme="white"] .MuiIconButton-root:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* GitHub-style footer */
+footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: #2F3136;
+}
+
+/* Light theme footer */
+body[data-theme="white"] footer {
+  border-top: 1px solid #e1e4e8;
+  background-color: #ffffff;
+}
+
+/* Purple theme footer */
+body[data-theme="purple"] footer {
+  border-top: 1px solid rgba(156, 39, 176, 0.3);
+  background-color: #2A1F2F;
+}
+
+/* Green theme footer */
+body[data-theme="green"] footer {
+  border-top: 1px solid rgba(76, 175, 80, 0.3);
+  background-color: #1F2A1F;
+}
+
+/* Midnight theme footer */
+body[data-theme="midnight"] footer {
+  border-top: 1px solid rgba(255, 23, 68, 0.3);
+  background-color: #121212;
+}
+
+/* Theme menu styling */
+.MuiMenu-paper {
+  background-color: #2F3136;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Light theme menu */
+body[data-theme="white"] .MuiMenu-paper {
+  background-color: #ffffff;
+  color: #24292e;
+  border: 1px solid #e1e4e8;
+}
+
+/* Purple theme menu */
+body[data-theme="purple"] .MuiMenu-paper {
+  background-color: #2A1F2F;
+  color: #FFFFFF;
+  border: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+/* Green theme menu */
+body[data-theme="green"] .MuiMenu-paper {
+  background-color: #1F2A1F;
+  color: #FFFFFF;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+/* Midnight theme menu */
+body[data-theme="midnight"] .MuiMenu-paper {
+  background-color: #121212;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 23, 68, 0.3);
+}
+
+/* Theme menu item hover */
+.MuiMenuItem-root:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Light theme menu item hover */
+body[data-theme="white"] .MuiMenuItem-root:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Theme menu item selected */
+.MuiMenuItem-root.Mui-selected {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Light theme menu item selected */
+body[data-theme="white"] .MuiMenuItem-root.Mui-selected {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Purple theme card border */
+body[data-theme="purple"] .MuiCard-root {
+  border: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+/* Green theme card border */
+body[data-theme="green"] .MuiCard-root {
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+/* Midnight theme card border */
+body[data-theme="midnight"] .MuiCard-root {
+  border: 1px solid rgba(255, 23, 68, 0.3);
+}
+
+/* Purple theme divider */
+body[data-theme="purple"] .MuiDivider-root {
+  border-color: rgba(156, 39, 176, 0.3);
+}
+
+/* Green theme divider */
+body[data-theme="green"] .MuiDivider-root {
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+/* Midnight theme divider */
+body[data-theme="midnight"] .MuiDivider-root {
+  border-color: rgba(255, 23, 68, 0.3);
+}
+
+/* Purple theme avatar border */
+body[data-theme="purple"] .MuiAvatar-root {
+  border: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+/* Green theme avatar border */
+body[data-theme="green"] .MuiAvatar-root {
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+/* Midnight theme avatar border */
+body[data-theme="midnight"] .MuiAvatar-root {
+  border: 1px solid rgba(255, 23, 68, 0.3);
+}
+
+/* Audio Controls */
+.audio-controls {
+  position: relative;
+  z-index: 10;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.audio-controls:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.audio-controls button {
+  min-width: 120px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.audio-controls button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.audio-controls button:active {
+  transform: scale(0.95);
+}
+
+/* Theme-specific audio control styles */
+body[data-theme="purple"] .audio-controls {
+  background: rgba(26, 15, 31, 0.8);
+  border: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+body[data-theme="green"] .audio-controls {
+  background: rgba(15, 26, 15, 0.8);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+body[data-theme="midnight"] .audio-controls {
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(255, 23, 68, 0.3);
+}
+
+/* Audio visualization container */
+.visualizer-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin: 2rem 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Theme-specific visualizer styles */
+body[data-theme="purple"] .visualizer-container {
+  background: rgba(26, 15, 31, 0.2);
+  border: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+body[data-theme="green"] .visualizer-container {
+  background: rgba(15, 26, 15, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+body[data-theme="midnight"] .visualizer-container {
+  background: rgba(10, 10, 10, 0.2);
+  border: 1px solid rgba(255, 23, 68, 0.3);
+}
+
+/* Loading indicator */
+.loading-audio {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-color);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Volume control */
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.volume-slider {
+  width: 100px;
+  height: 4px;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  outline: none;
+}
+
+/* Theme-specific volume slider styles */
+body[data-theme="purple"] .volume-slider {
+  background: rgba(156, 39, 176, 0.2);
+}
+
+body[data-theme="green"] .volume-slider {
+  background: rgba(76, 175, 80, 0.2);
+}
+
+body[data-theme="midnight"] .volume-slider {
+  background: rgba(255, 23, 68, 0.2);
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Error message */
+.audio-error {
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+/* Login form styles */
+.login-paper {
+  padding: 2rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+/* Theme-specific login form styles */
+body[data-theme="purple"] .login-paper {
+  background: rgba(26, 15, 31, 0.95);
+  border: 1px solid rgba(156, 39, 176, 0.3);
+  box-shadow: 0 4px 12px rgba(156, 39, 176, 0.2);
+}
+
+body[data-theme="green"] .login-paper {
+  background: rgba(15, 26, 15, 0.95);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+body[data-theme="midnight"] .login-paper {
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(255, 23, 68, 0.3);
+  box-shadow: 0 4px 12px rgba(255, 23, 68, 0.2);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.login-button {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+/* Theme-specific login button styles */
+body[data-theme="purple"] .login-button {
+  background: #9C27B0;
+  color: white;
+}
+
+body[data-theme="green"] .login-button {
+  background: #4CAF50;
+  color: white;
+}
+
+body[data-theme="midnight"] .login-button {
+  background: #FF1744;
+  color: white;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-button {
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+}
+
+/* Theme-specific back button styles */
+body[data-theme="purple"] .back-button {
+  color: #BA68C8;
+}
+
+body[data-theme="green"] .back-button {
+  color: #81C784;
+}
+
+body[data-theme="midnight"] .back-button {
+  color: #FF616F;
+}
+
+.back-button:hover {
+  opacity: 0.8;
+}
+
+/* Password visibility toggle */
+.MuiInputAdornment-root {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Theme-specific input styles */
+body[data-theme="purple"] .MuiInputBase-root {
+  border-color: rgba(156, 39, 176, 0.3);
+}
+
+body[data-theme="green"] .MuiInputBase-root {
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+body[data-theme="midnight"] .MuiInputBase-root {
+  border-color: rgba(255, 23, 68, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .login-paper {
+    padding: 1rem;
+  }
+  
+  .login-form {
+    gap: 1rem;
+  }
+  
+  .login-button {
+    padding: 0.5rem;
+  }
+} 
