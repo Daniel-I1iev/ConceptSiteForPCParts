@@ -51,6 +51,7 @@ import NightlightIcon from '@mui/icons-material/Nightlight';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Login from './components/Login';
 import AudioVisualizer from './components/AudioVisualizer';
+import SavedBuilds from './components/SavedBuilds';
 
 // Theme definitions
 const themes = {
@@ -294,6 +295,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [userMenuAnchor, setUserMenuAnchor] = useState(null);
+  const [showSavedButton, setShowSavedButton] = useState(false);
   const navigate = useNavigate();
   
   // Check if user is logged in on component mount
@@ -434,6 +436,13 @@ function App() {
     });
   };
 
+  const handleSaveBuild = () => {
+    const savedBuilds = JSON.parse(localStorage.getItem('savedBuilds') || '[]');
+    savedBuilds.push(selectedParts);
+    localStorage.setItem('savedBuilds', JSON.stringify(savedBuilds));
+    setShowSavedButton(true);
+  };
+
   // Count selected parts
   const selectedPartsCount = Object.values(selectedParts).filter(part => part !== null).length;
   
@@ -539,7 +548,11 @@ function App() {
                   </MenuItem>
                 ))}
               </Menu>
-              <IconButton color="inherit" aria-label="github">
+              <IconButton 
+                color="inherit" 
+                aria-label="github" 
+                onClick={() => window.open('https://github.com/Daniel-I1iev', '_blank', 'noopener,noreferrer')}
+              >
                 <GitHubIcon />
               </IconButton>
               
@@ -810,8 +823,18 @@ function App() {
               fullWidth
               disabled={compatibilityIssues.length > 0}
               startIcon={<ShoppingCartIcon />}
+              onClick={handleSaveBuild}
             >
               Save Build
+            </Button>
+            <Button 
+              variant="outlined" 
+              color="primary" 
+              sx={{ mt: 2 }}
+              fullWidth
+              onClick={() => navigate('/saved-builds')}
+            >
+              View Saved Builds
             </Button>
           </Paper>
         </Container>
@@ -850,9 +873,10 @@ function AppWithRouter() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/saved-builds" element={<SavedBuilds />} />
       </Routes>
     </Router>
   );
 }
 
-export default AppWithRouter; 
+export default AppWithRouter;

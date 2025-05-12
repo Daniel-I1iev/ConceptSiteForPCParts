@@ -173,6 +173,7 @@ export const pcParts = {
       vram: 12,
       memoryType: 'GDDR6X',
       powerDraw: 285,
+      length: 305, // mm
       description: 'Great 1440p gaming performance'
     },
     {
@@ -182,6 +183,7 @@ export const pcParts = {
       vram: 20,
       memoryType: 'GDDR6',
       powerDraw: 315,
+      length: 287, // mm
       description: 'Excellent 4K gaming performance'
     },
     {
@@ -191,6 +193,7 @@ export const pcParts = {
       vram: 16,
       memoryType: 'GDDR6X',
       powerDraw: 320,
+      length: 304, // mm
       description: 'Premium 4K gaming performance'
     },
     {
@@ -200,6 +203,7 @@ export const pcParts = {
       vram: 16,
       memoryType: 'GDDR6',
       powerDraw: 263,
+      length: 280, // mm
       description: 'Great value 1440p gaming'
     },
     {
@@ -209,6 +213,7 @@ export const pcParts = {
       vram: 12,
       memoryType: 'GDDR6X',
       powerDraw: 200,
+      length: 242, // mm
       description: 'Solid 1440p gaming performance'
     }
   ],
@@ -387,26 +392,38 @@ export const calculateTotalPowerDraw = (parts) => {
   return total;
 };
 
+// Assign tiers to CPUs and GPUs for bottleneck logic
+const cpuTiers = {
+  'cpu1': 2, // Intel Core i5-13600K
+  'cpu2': 3, // AMD Ryzen 7 7800X3D
+  'cpu3': 4, // Intel Core i9-13900K
+  'cpu4': 1, // AMD Ryzen 5 7600X
+  'cpu5': 3  // Intel Core i7-13700K
+};
+const gpuTiers = {
+  'gpu1': 3, // RTX 4070 Ti
+  'gpu2': 4, // RX 7900 XT
+  'gpu3': 4, // RTX 4080
+  'gpu4': 2, // RX 7800 XT
+  'gpu5': 2  // RTX 4070 Super
+};
+
 // Check for bottlenecks
 export const checkBottlenecks = (parts) => {
   const bottlenecks = [];
-  
   if (parts.cpu && parts.gpu) {
-    // Check CPU-GPU balance
-    const cpuGpuRatio = parts.cpu.cores * parts.cpu.maxSpeed / (parts.gpu.vram * 1000);
-    if (cpuGpuRatio < 0.5) {
+    const cpuTier = cpuTiers[parts.cpu.id] || 2;
+    const gpuTier = gpuTiers[parts.gpu.id] || 2;
+    if (cpuTier + 2 <= gpuTier) {
       bottlenecks.push('CPU might bottleneck GPU performance');
-    } else if (cpuGpuRatio > 2) {
+    } else if (gpuTier + 2 <= cpuTier) {
       bottlenecks.push('GPU might bottleneck CPU performance');
     }
   }
-
   if (parts.ram && parts.cpu) {
-    // Check RAM speed vs CPU
     if (parts.ram.speed < 5600 && parts.cpu.cores >= 8) {
       bottlenecks.push('RAM speed might limit CPU performance');
     }
   }
-
   return bottlenecks;
-}; 
+};

@@ -2,13 +2,26 @@
 
 A user-friendly web application that helps beginners build their PC by selecting compatible components. Features a modern, responsive design with multiple theme options and an interactive audio visualizer.
 
+## Recent Updates (May 2025)
+
+- **GitHub Icon:** The AppBar now includes a GitHub icon that links directly to the developer's GitHub profile.
+- **Improved Compatibility Logic:** GPU/case compatibility now only warns if the GPU is actually too long for the selected case.
+- **Accurate Bottleneck Detection:** Bottleneck logic is now tier-based and more accurate for the CPUs and GPUs included in the app.
+- **Save Build:** Added a "Save Build" button to save the current build to localStorage.
+- **View Saved Builds:** Added a "View Saved Builds" button (always visible) that navigates to a new page listing all saved builds. Each build can be expanded to show its parts in a styled, theme-adaptive dropdown.
+- **Persistent Saved Builds:** Saved builds persist across navigation and reloads using localStorage.
+- **Theme-Adaptive Dropdowns:** Saved builds dropdowns adapt their background color to the current theme for a seamless look.
+
 ## Features
 
 - Easy-to-use interface for selecting PC components
 - Real-time price calculation
-- Component compatibility checking
+- Component compatibility checking (including GPU/case length and PSU wattage)
 - Modern, responsive design
 - Beginner-friendly component selection
+- Save and view multiple PC builds (persisted in localStorage)
+- Expandable, theme-adaptive dropdowns for saved builds
+- Accurate, tier-based bottleneck detection for CPUs and GPUs
 - Multiple theme options:
   - Light theme
   - Purple theme
